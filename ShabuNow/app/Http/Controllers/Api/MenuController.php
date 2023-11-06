@@ -61,13 +61,13 @@ class MenuController extends Controller
         $menu->category_id = $category->id;
         $menu->description = $request->get('description');
         $menu->status = 'available';
-        $menu->imgPath = $request->get('imgPath');
+//        $menu->imgPath = $request->get('imgPath');
 
-//        if($request->file('imgPath') != null )
-//        {
-//            $imagePath = $request->file('imgPath')->store('foodImages', 'public');
-//            $menu->imgPath = $imagePath;
-//        }
+        if($request->file('imgPath') != null )
+        {
+            $imagePath = $request->file('imgPath')->store('foodImages', 'public');
+            $menu->imgPath = $imagePath;
+        }
 
         $menu->save();
         $menu->refresh();
@@ -100,9 +100,14 @@ class MenuController extends Controller
         {
             $menu->status = $request->get('status');;
         }
-        if($request->get('imgPath') != null)
+//        if($request->get('imgPath') != null)
+//        {
+//            $menu->imgPath = $request->get('imgPath');
+//        }
+        if($request->file('imgPath') != null )
         {
-            $menu->imgPath = $request->get('imgPath');
+            $imagePath = $request->file('imgPath')->store('foodImages', 'public');
+            $menu->imgPath = $imagePath;
         }
 
         $menu->save();
