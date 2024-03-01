@@ -129,7 +129,7 @@ sail artisan migrate:fresh --seed
 # ผลการรัน unit test
 >รันด้วยคำสั่ง
 ```bash
-sail artisan test
+sail artisan test --testsuite="Feature"
 ```
 >
 >
